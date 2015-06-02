@@ -1,11 +1,11 @@
 'use strict';
 
-module.exports = function(accessor_value, plot, plotMixin, showZero) {  // Injected dependencies
+module.exports = function(accessor_value, plot, plotMixin, showZero, interpolator) {  // Injected dependencies
   showZero = showZero || false;
 
   return function() { // Closure function
     var p = {},  // Container for private, direct access mixed in variables
-        svgLine = plot.pathLine();
+        svgLine = plot.pathLine(interpolator);
 
     function line(g) {
       var group = plot.groupSelect(g, plot.dataMapper.array);

@@ -11,8 +11,8 @@ module.exports = function(d3_svg_line, d3_select) {
     return dataSelection.enter().append('g').attr('class', 'data');
   }
 
-  function PathLine() {
-    var d3Line = d3_svg_line().interpolate('monotone');
+  function PathLine(interpolator) {
+    var d3Line = d3_svg_line().interpolate((interpolator || 'monotone'));
 
     function line(data) {
       return d3Line(data);

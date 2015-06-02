@@ -1529,7 +1529,7 @@ module.exports = function(d3) {
     ema: line(accessor.value, plot, plotMixin),
     ichimoku: require('./ichimoku')(d3.svg.area, accessor.ichimoku, plot, plotMixin),
     ohlc: require('./ohlc')(d3.scale.linear, d3.extent, accessor.ohlc, plot, plotMixin),
-    close: line(accessor.ohlc, plot, plotMixin),
+    close: line(accessor.ohlc, plot, plotMixin, false, 'linear'),
     volume: require('./volume')(accessor.volume, plot, plotMixin),
     rsi: require('./rsi')(accessor.rsi, plot, plotMixin),
     macd: require('./macd')(accessor.macd, plot, plotMixin),
@@ -1548,12 +1548,12 @@ function d3_event() {
 },{"../accessor":4,"../scale":36,"./atrtrailingstop":20,"./axisannotation":21,"./candlestick":22,"./crosshair":23,"./ichimoku":24,"./line":26,"./macd":27,"./ohlc":28,"./plot":29,"./plotmixin":30,"./rsi":31,"./supstance":32,"./trendline":33,"./volume":34}],26:[function(require,module,exports){
 'use strict';
 
-module.exports = function(accessor_value, plot, plotMixin, showZero) {  // Injected dependencies
+module.exports = function(accessor_value, plot, plotMixin, showZero, interpolator) {  // Injected dependencies
   showZero = showZero || false;
 
   return function() { // Closure function
     var p = {},  // Container for private, direct access mixed in variables
-        svgLine = plot.pathLine();
+        svgLine = plot.pathLine(interpolator);
 
     function line(g) {
       var group = plot.groupSelect(g, plot.dataMapper.array);
@@ -1716,8 +1716,8 @@ module.exports = function(d3_svg_line, d3_select) {
     return dataSelection.enter().append('g').attr('class', 'data');
   }
 
-  function PathLine() {
-    var d3Line = d3_svg_line().interpolate('monotone');
+  function PathLine(interpolator) {
+    var d3Line = d3_svg_line().interpolate((interpolator || 'monotone'));
 
     function line(data) {
       return d3Line(data);
