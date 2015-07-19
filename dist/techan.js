@@ -2074,7 +2074,7 @@ module.exports = function(d3_behavior_drag, d3_event, d3_select, d3_dispatch, ac
       accessor.v(d, value);
       annotationSelection.each(plot.annotation.update(annotation, d3_event().y));
       refresh(g, plot, accessor, x, y, annotationSelection, annotation);
-      dispatch.drag(d);
+      dispatch.drag(d, g);
     });
 
     return plot.interaction.dragStartEndDispatch(drag, dispatch);
@@ -2100,6 +2100,7 @@ function supstancePath(accessor, x, y) {
     return path.join(' ');
   };
 }
+
 },{}],33:[function(require,module,exports){
 'use strict';
 

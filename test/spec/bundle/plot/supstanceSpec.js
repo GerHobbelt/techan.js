@@ -284,7 +284,7 @@ techanModule('plot/supstance', function(specBuilder) {
             });
 
             it('Then should dispatch the drag event', function() {
-              expect(listeners.drag).toHaveBeenCalledWith({ value: 16 });
+              expect(listeners.drag).toHaveBeenCalledWith({ value: 16 }, jasmine.any(Object));
             });
           });
 
