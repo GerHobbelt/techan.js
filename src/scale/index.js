@@ -84,6 +84,11 @@ module.exports = function(d3) {
           .range([1, 0]);
       },
 
+      q: function () {
+        return d3.scale.linear().domain([0, 100])
+          .range([1, 0]);
+      },
+
       momentum: function(data, accessor) {
         accessor = accessor || accessors.value();
         return pathScale(d3, data, accessor, 0.04);

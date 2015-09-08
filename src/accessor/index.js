@@ -9,6 +9,7 @@ module.exports = function() {
     macd: require('./macd'),
     ohlc: require('./ohlc'),
     rsi: require('./rsi'),
+    q: require('./q'),
     trendline: require('./trendline'),
     value: require('./value'),
     volume: require('./volume')

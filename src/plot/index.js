@@ -20,6 +20,7 @@ module.exports = function(d3) {
     close: line(accessor.ohlc, plot, plotMixin),
     volume: require('./volume')(accessor.volume, plot, plotMixin),
     rsi: require('./rsi')(accessor.rsi, plot, plotMixin),
+    q: require('./q')(accessor.q, plot, plotMixin),
     macd: require('./macd')(accessor.macd, plot, plotMixin),
     momentum: line(accessor.value, plot, plotMixin, true),
     moneyflow: line(accessor.value, plot, plotMixin, true),
