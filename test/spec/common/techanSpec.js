@@ -38,6 +38,14 @@ function techanSpec(techan) {
       expect(techan.accessor.ohlc()).toBeDefined();
     });
 
+    it('Then techan.accessor.tick should be defined', function () {
+      expect(techan.accessor.tick).toBeDefined();
+    });
+
+    it('Then techan.accessor.tick can be constructed', function () {
+      expect(techan.accessor.tick()).toBeDefined();
+    });
+
     it('Then techan.accessor.macd should be defined', function () {
       expect(techan.accessor.macd).toBeDefined();
     });
@@ -238,6 +246,14 @@ function techanSpec(techan) {
       expect(techan.plot.ohlc()).toBeDefined();
     });
 
+    it('Then techan.plot.tick should be defined', function () {
+      expect(techan.plot.tick).toBeDefined();
+    });
+
+    it('Then techan.plot.tick can be constructed', function () {
+      expect(techan.plot.tick()).toBeDefined();
+    });
+
     it('Then techan.plot.rsi should be defined', function () {
       expect(techan.plot.rsi).toBeDefined();
     });
@@ -288,6 +304,14 @@ function techanSpec(techan) {
 
     it('Then techan.scale.financetime can be constructed', function () {
       expect(techan.scale.financetime()).toBeDefined();
+    });
+
+    it('Then techan.svg should be defined', function () {
+      expect(techan.svg).toBeDefined();
+    });
+
+    it('Then techan.svg.arrow can be constructed', function () {
+      expect(techan.svg.arrow()).toBeDefined();
     });
 
     it('Then techan.undefinedControl should be undefined', function() {
