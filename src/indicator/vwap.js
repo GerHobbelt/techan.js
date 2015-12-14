@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(indicatorMixin, accessor_ohlc) {  // Injected dependencies
+module.exports = function(indicatorMixin, accessor) {  // Injected dependencies
   return function() { // Closure function
     var p = {},  // Container for private, direct access mixed in variables
         cumul_total,
@@ -25,17 +25,19 @@ module.exports = function(indicatorMixin, accessor_ohlc) {  // Injected dependen
 	cumul_volume = 0;
       }
 
-      var price = (p.accessor.h(d) + p.accessor.l(d) + p.accessor.c(d)) / 3;
-      cumul_total += price * p.accessor.v(d);
+      cumul_total += p.accessor(d) * p.accessor.v(d);
       cumul_volume += p.accessor.v(d);
-
       prev_date = p.accessor.d(d);
+
+      if (!cumul_volume)
+        return { date: p.accessor.d(d) };
+
       return { date: p.accessor.d(d), value: cumul_total / cumul_volume };
     }
 
     // Mixin 'superclass' methods and variables
     indicatorMixin(indicator, p)
-      .accessor(accessor_ohlc())
+      .accessor(accessor())
       .period(1);
 
     return indicator;
