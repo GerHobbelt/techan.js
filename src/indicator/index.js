@@ -7,7 +7,7 @@ module.exports = function() {
       ema = ema_init(indicatorMixin, accessor.ohlc, ema_alpha_init),
       sma = require('./sma')(indicatorMixin, accessor.ohlc),
       atr = require('./atr')(indicatorMixin, accessor.ohlc, sma),
-      vwap = require('./vwap')(indicatorMixin, accessor.ohlc);
+      vwap = require('./vwap')(indicatorMixin, accessor.hlc3);
 
   return {
     atr: atr,
