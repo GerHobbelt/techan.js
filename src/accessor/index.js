@@ -12,6 +12,7 @@ module.exports = function() {
     hlc3: require('./hlc3'),
     ohlc4: require('./ohlc4'),
     rsi: require('./rsi'),
+    q: require('./q'),
     trendline: require('./trendline'),
     value: require('./value'),
     volume: require('./volume'),

@@ -16,6 +16,7 @@ module.exports = function() {
     ichimoku: require('./ichimoku')(indicatorMixin, accessor.ohlc),
     macd: require('./macd')(indicatorMixin, accessor.ohlc, ema),
     rsi: require('./rsi')(indicatorMixin, accessor.ohlc, ema),
+    q: require('./q')(indicatorMixin, accessor.ohlc, ema),
     sma: sma,
     wilderma: ema_init(indicatorMixin, accessor.ohlc, wilder_alpha_init),
     aroon: require('./aroon')(indicatorMixin, accessor.ohlc),
